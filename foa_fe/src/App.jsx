@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicHome from "./pages/PublicHome";
 import Login from "./pages/login";
+import Register from "./pages/Register";
 
 
 
@@ -9,7 +10,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PublicHome />} />
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
