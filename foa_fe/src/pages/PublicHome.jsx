@@ -10,32 +10,26 @@ export default function PublicHome() {
                 backgroundImage: `url(${landingimage})`,
             }}
         >
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-28 flex flex-col sm:flex-row gap-4">
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+                {/* ORDER NOW */}
+                <Link
+                    to="/auth"
+                    className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300 shadow-lg"
+                >
+                    ORDER NOW
+                </Link>
 
-
-                {/* BUTTONS */}
-                <div className="flex flex-col sm:flex-row gap-4">
-
-                    {/* ORDER NOW */}
-                  <Link
-                        to="/auth"
-                        className="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition duration-300"
-                    >
-                        Order Now
-                    </Link>
-
-                    {/* EXPLORE FOOD */}
-                    <Link
-                        to="/menu"
-                        className="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition duration-300"
-                    >
-                        Explore Food
-                    </Link>
-
-                </div>
+                {/* EXPLORE FOOD */}
+                <Link
+                    to="/menu"
+                    className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300 shadow-lg"
+                >
+                    EXPLORE FOOD
+                </Link>
 
             </div>
         </div>
+
     );
 }

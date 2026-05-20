@@ -6,9 +6,10 @@ import { useNavigate } from "react-router-dom";
 export default function Register() {
 
     const [form, setForm] = useState({
-        name: "",
-        email: "",
-        password: ""
+        userName: "",
+        userEmail: "",
+        userPhone: "",
+        userPassword: ""
     });
 
     const [error, setError] = useState("");
@@ -24,16 +25,27 @@ export default function Register() {
 
         const passwordRegex = /^(?=.*[0-9]).{6,}$/;
 
-        if (!form.name.trim()) {
-            return "Name is required"
+
+        const phoneRegex = /^[0-9]{10}$/;
+
+
+        if (!form.userName.trim()) {
+            return "Name is required";
         }
 
-        if (!eamilRegex.test(form.email)) {
+
+        if (!emailRegex.test(form.userEmail)) {
             return "Invalid email format";
         }
 
+
+        if (!phoneRegex.test(form.userPhone)) {
+            return "Phone number must be exactly 10 digits";
+        }
+
+
         if (!passwordRegex.test(form.password)) {
-            return "Password must be atleast 6 characters and include a number";
+            return "Password must be at least 6 characters and include a number";
         }
 
         return null;
@@ -61,49 +73,70 @@ export default function Register() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen flex items-center justify-center bg-[#f8f5f0] px-4">
 
-            <form
-                onSubmit={handleRegister}
-                className="bg-white p-8 rounded-2xl shadow-sm w-full max-w-sm"
-            >
-                <h1 className="text-2xl font-semibold text-center mb-6">
-                    Create Account
-                </h1>
+
+            <div className="bg-white p-10 rounded-3xl w-full max-w-md shadow-xl border border-zinc-200">
+
+
+                <p className="text-zinc-500 text-center mb-8 text-lg">
+                    Create your Janubai Foods account
+                </p>
+
 
                 {error && (
-                    <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+                    <p className="text-red-500 text-sm mb-4 text-center">
+                        {error}
+                    </p>
                 )}
 
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    onChange={handleChange}
-                    className="w-full p-3 mb-4 border rounded-lg"
-                />
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    className="w-full p-3 mb-4 border rounded-lg"
-                />
+                <form onSubmit={handleRegister} className="flex flex-col gap-4">
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                    className="w-full p-3 mb-4 border rounded-lg"
-                />
 
-                <button className="w-full bg-black text-white py-3 rounded-lg">
-                    Register
-                </button>
+                    <input
+                        type="text"
+                        name="userName"
+                        placeholder="Full Name"
+                        onChange={handleChange}
+                        className="w-full p-3 border border-zinc-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#3b2416]"
+                    />
 
-            </form>
+
+                    <input
+                        type="email"
+                        name="userEmail"
+                        placeholder="Email"
+                        onChange={handleChange}
+                        className="w-full p-3 border border-zinc-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#3b2416]"
+                    />
+
+
+                    <input
+                        type="text"
+                        name="userPhone"
+                        placeholder="Phone Number"
+                        onChange={handleChange}
+                        className="w-full p-3 border border-zinc-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#3b2416]"
+                    />
+
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        onChange={handleChange}
+                        className="w-full p-3 border border-zinc-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#3b2416]"
+                    />
+
+
+                    <button className="w-full bg-[#3b2416] text-white py-3 rounded-full font-medium hover:bg-[#523423] transition duration-300">
+                        Register
+                    </button>
+
+                </form>
+
+            </div>
         </div>
     )
 
